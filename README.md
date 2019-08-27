@@ -18,7 +18,7 @@
 2. 启动`EnclaveManager`（用于管理SGX enclave）和`TCSServer`（负责监听并处理客户端请求）
     ```bash
     # 下面的操作需要等待Pod和服务的状态都变成 Ready
-    kubectl create -f enclave-manager-pod.yaml
+    kubectl create -f enclave-manager-replicaset.yaml
 
     kubectl create -f tcs-replicaset.yaml
     kubectl create -f tcs-service.yaml
