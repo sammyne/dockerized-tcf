@@ -6,10 +6,13 @@ metadata:
     app: database
 spec:
   containers:
-  - image: sammyne/hyperledger-tcf:alpha
+  - image: sammyne/hyperledger-tcf
     name: lmdb-server
     command: ["/bin/bash"]
-    args: ["${TCF_HOME}/scripts/lmdb.sh"]
+    args: ["$(TCF_HOME)/scripts/lmdb.sh"]
+    env:
+    - name: TCF_HOME
+      value: /project/TrustedComputeFramework
     ports:
     - containerPort: 9090
       protocol: TCP
