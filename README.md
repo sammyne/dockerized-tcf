@@ -20,7 +20,7 @@
     # 下面的操作需要等待Pod和服务的状态都变成 Ready
     kubectl create -f enclave-manager-pod.yaml
 
-    kubectl create -f tcs-server-pod.yaml
+    kubectl create -f tcs-replicaset.yaml
     kubectl create -f tcs-service.yaml
     ```
 

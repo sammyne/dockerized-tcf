@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: tcs
+spec:
+  replicas: 1
+  selector:
+    matchLabels: 
+      app: tcs
+  template:
+    metadata:
+      labels:
+        app: tcs
+    spec:
+      containers:
+      - image: sammyne/hyperledger-tcf
+        name: enclave-manager
+        command: ["/bin/bash"]
+        args: ["$(TCF_HOME)/scripts/tcs_listener.sh"]
+        env:
+        - name: TCF_HOME
+          value: /project/TrustedComputeFramework
