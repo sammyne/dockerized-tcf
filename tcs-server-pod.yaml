@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tcs-server
+  labels:
+    app: tcs
+spec:
+  containers:
+  - image: sammyne/hyperledger-tcf
+    name: enclave-manager
+    command: ["/bin/bash"]
+    args: ["$(TCF_HOME)/scripts/tcs_listener.sh"]
+    env:
+    - name: TCF_HOME
+      value: /project/TrustedComputeFramework
