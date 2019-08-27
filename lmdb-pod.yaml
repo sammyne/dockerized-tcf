@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: lmdb
+  labels:
+    app: database
+spec:
+  containers:
+  - image: sammyne/hyperledger-tcf:alpha
+    name: lmdb-server
+    command: ["/bin/bash"]
+    args: ["${TCF_HOME}/scripts/lmdb.sh"]
+    ports:
+    - containerPort: 9090
+      protocol: TCP
+    volumeMounts:
+    - name: db
+      mountPath: /lmdb
+  volumes:
+  - name: db
+    emptyDir: {}
