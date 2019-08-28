@@ -10,18 +10,14 @@
 
 1. 启动LMDB服务器
     ```bash
-    kubectl create -f lmdb-pod.yaml
-
-    # 创建管理 LMDB Pod的服务用于接收 CRUD 请求
-    kubectl create -f lmdb-service.yaml
+    # 启动相应的Pod和Serivice
+    kubectl create -f lmdb.yaml
     ```
 2. 启动`EnclaveManager`（用于管理SGX enclave）和`TCSServer`（负责监听并处理客户端请求）
     ```bash
-    # 下面的操作需要等待Pod和服务的状态都变成 Ready
-    kubectl create -f enclave-manager-replicaset.yaml
+    kubectl create -f enclave-manager-deployment.yaml
 
-    kubectl create -f tcs-replicaset.yaml
-    kubectl create -f tcs-service.yaml
+    kubectl create -f tcs.yaml
     ```
 
 ## 使用示例
